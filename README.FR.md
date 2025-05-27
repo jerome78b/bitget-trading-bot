@@ -44,7 +44,7 @@ Le bot est organisé autour de modules robustes :
 - **Surveillance continue** : dashboard en direct, affichage console dynamique
 ```
  ⚙️  Levier réglé : 3x
- ================== Version 8.7V2DMI ==================
+ ================== Version 8.8 ==================
  📅 2025-05-27 21:03:49 | Prix ETHUSDT : 2676.00 USDT
  🏦 Total capital       : 5109.23 USDT
  💰 Solde en USDT       : 5222.44 USDT
@@ -57,8 +57,9 @@ Le bot est organisé autour de modules robustes :
  🎯 TP actif  : 2669.51
  🛡️ SL actif  : 2736.92
  🔄 Sortie partielle : en attente
+ ```
 - **Communication** : notifications Telegram, logs locaux
-```
+
 ---
 
 ## 🧩 Stratégie personnalisable
@@ -72,10 +73,10 @@ Le bot repose par défaut sur une stratégie technique éprouvée combinant troi
 🔶 **2. RSI (Relative Strength Index)**
 - Utilisé pour **filtrer les faux signaux**.
 - Le RSI doit confirmer la dynamique :
- - 📈 Pour un **LONG**, on attend que le RSI dépasse un seuil (ex. > 40).
- - 📉 Pour un **SHORT**, on attend qu’il passe sous un seuil (ex. < 60).
+- 📈 Pour un **LONG**, on attend que le RSI dépasse un seuil (ex. > 40).
+- 📉 Pour un **SHORT**, on attend qu’il passe sous un seuil (ex. < 60).
 
-🔺 **3. Filtre de volatilité (propre au bot)**
+♦️ **3. Filtre de volatilité (propre au bot)**
 - Calcul basé sur la **largeur des bandes de Bollinger**.
 - Le trade est autorisée uniquement si la volatilité est suffisante, pour éviter les marchés plats.
 
@@ -85,7 +86,7 @@ Mais il est **conçu pour être facilement modifiable** :
 
 ## 🔁 Comment faire ?
 
-Dans le fichier `BitgetBotV8.7.py`, la fonction suivante détermine les signaux :
+Dans le fichier `BitgetBotV8.8.py`, la fonction suivante détermine les signaux :
 
 ```python
 def check_signal_bb_rsi(df):
@@ -97,7 +98,11 @@ def check_signal_bb_rsi(df):
 ## 📦 Installation
 ```
 git clone https://github.com/jerome78b/bitget-trading-bot.git
+```
 cd bitget-trading-bot
+```
+python -m venv venv
+```
 pip install -r requirements.txt
 ```
 ---
