@@ -49,7 +49,7 @@ Le bot est organisé autour de modules robustes :
  🏦 Total capital       : 5109.23 USDT
  💰 Solde en USDT       : 5222.44 USDT
  💸 disponible          : 138.73 USDT
- ⚖️  P&L non réalisé    : 113.21 USDT
+ ⚖️ P&L non réalisé    : 113.21 USDT
  📏 Initial Margin      : 4970.50 USDT
  📊 Initial Margin %    : 97.28 %
  ==================================================
