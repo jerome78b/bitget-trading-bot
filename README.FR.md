@@ -59,7 +59,7 @@ Le bot est organisé autour de modules robustes :
  🔄 Sortie partielle : en attente
  ```
 - **Communication** : notifications Telegram, logs locaux
-![alt text](image.png)
+![Notifications Telegram](./assets/telegram-demo.png/)
 ---
 
 ## 🧩 Stratégie personnalisable
