@@ -126,6 +126,8 @@ Voici les principales variables de configuration et leur rôle :
 | `SYMBOL`        | `str`  | Paire en USDT à trader, ex : `'ETHUSDT'`, `'SOLUSDT'`                          |
 | `TIMEFRAME`     | `str`  | Période des bougies utilisées, ex : `'1m'`, `'5m'`, `'15m'`, `'1h'`            |
 | `LEVERAGE`      | `int`  | Levier appliqué à la position (ex : `3`, `5`, `10`)                           |
+| `CAPITAL_ENGAGEMENT`      | `int`  |Pourcentage du capital à allouer (10%) (ex :`0.10`)                   |
+
 ## ✏️ Configuration
 ```
 API_KEY=your_api_key
