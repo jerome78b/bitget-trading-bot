@@ -124,7 +124,7 @@ Here are the key configuration variables and what they do:
 | `SYMBOL`        | `str`  | USDT-based pair to trade, e.g. `'ETHUSDT'`, `'SOLUSDT'`                      |
 | `TIMEFRAME`     | `str`  | Candlestick timeframe for analysis, e.g. `'1m'`, `'5m'`, `'15m'`, `'1h'`     |
 | `LEVERAGE`      | `int`  | Leverage level applied to the position (e.g. `3`, `5`, `10`)                 |
-| `CAPITAL_ENGAGEMENT`      | `int`  |Percentage of capital to allocate (10%) (ex :`0.10`)                   |
+| `CAPITAL_ENGAGEMENT`      | `float`  |Percentage of capital to allocate (10%) (ex :`0.10`)                   |
 
 ## ✏️ Configuration
 ```
