@@ -34,7 +34,7 @@ The bot can run in **test/demo mode** or in **live trading**, with **Telegram no
 - 
 ---
 
-## 🧩 Stratégie personnalisable
+## 🧩 Customizable strategy
 
 The bot uses by default a strategy based on:
 
