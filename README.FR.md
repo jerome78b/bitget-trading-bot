@@ -99,9 +99,12 @@ def check_signal_bb_rsi(df):
 ```
 git clone https://github.com/jerome78b/bitget-trading-bot.git
 ```
+```
 cd bitget-trading-bot
 ```
+```
 python -m venv venv
+```
 ```
 pip install -r requirements.txt
 ```
