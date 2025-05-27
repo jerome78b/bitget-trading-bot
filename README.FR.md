@@ -33,15 +33,52 @@ Le bot peut s’exécuter en **mode test/démo** ou **réel**, avec notification
 - 🛠️ Intégration Telegram (alertes et notifications en temps réel)
 - 🧪 Mode TEST intégré pour simuler un trade sans attendre de signal
 
+## 🧱 Architecture du bot
+
+Le bot est organisé autour de modules robustes :
+
+- **Analyse de marché** : récupération des bougies avec CCXT + calcul Bollinger/RSI
+- **Détection de signal** : stratégie personnalisable (`check_signal_bb_rsi`)
+- **Exécution des ordres** : market order + gestion du mode marge et levier
+- **Protection des positions** : TP/SL automatiques, TPP (Take Profit Partiel)
+- **Surveillance continue** : dashboard en direct, affichage console dynamique
+```
+ ⚙️  Levier réglé : 3x
+ ================== Version 8.7V2DMI ==================
+ 📅 2025-05-27 21:03:49 | Prix ETHUSDT : 2676.00 USDT
+ 🏦 Total capital       : 5109.23 USDT
+ 💰 Solde en USDT       : 5222.44 USDT
+ 💸 disponible          : 138.73 USDT
+ ⚖️  P&L non réalisé    : 113.21 USDT
+ 📏 Initial Margin      : 4970.50 USDT
+ 📊 Initial Margin %    : 97.28 %
+ ==================================================
+ 📌 Position  : SHORT | Entrée : 2696.47 | Qté : 5.53 ETHUSDT
+ 🎯 TP actif  : 2669.51
+ 🛡️ SL actif  : 2736.92
+ 🔄 Sortie partielle : en attente
+- **Communication** : notifications Telegram, logs locaux
+```
 ---
 
 ## 🧩 Stratégie personnalisable
 
-Le bot utilise par défaut une stratégie basée sur :
+Le bot repose par défaut sur une stratégie technique éprouvée combinant trois outils :
 
-- **Bandes de Bollinger**
-- **RSI (Relative Strength Index)**
-- Un filtre de **volatilité** basé sur la largeur des bandes
+🔷 **1. Bandes de Bollinger (Bollinger Bands)**
+- Permettent de visualiser les zones de **surachat/survente** en fonction de la volatilité.
+- Le bot détecte les **cassures** de bande (breakouts), ce qui peut signaler une entrée potentielle.
+
+🔶 **2. RSI (Relative Strength Index)**
+- Utilisé pour **filtrer les faux signaux**.
+- Le RSI doit confirmer la dynamique :
+ - 📈 Pour un **LONG**, on attend que le RSI dépasse un seuil (ex. > 40).
+ - 📉 Pour un **SHORT**, on attend qu’il passe sous un seuil (ex. < 60).
+
+🔺 **3. Filtre de volatilité (propre au bot)**
+- Calcul basé sur la **largeur des bandes de Bollinger**.
+- Le trade est autorisée uniquement si la volatilité est suffisante, pour éviter les marchés plats.
+
 
 Mais il est **conçu pour être facilement modifiable** :  
 ➡️ Vous pouvez adapter **votre propre stratégie de trading**, sans toucher au cœur du bot.
