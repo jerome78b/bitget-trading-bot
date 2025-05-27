@@ -16,6 +16,7 @@ Le bot peut s’exécuter en **mode test/démo** ou **réel**, avec notification
 
 ## ⚠️ Prérequis & Compatibilité
 
+- Un compte [Bitget](https://www.bitget.com/)
 - Ce bot est conçu pour le **trading sur contrats Futures uniquement** (pas Spot).
 - Il fonctionne uniquement avec des **paires en USDT**, comme `BTCUSDT`, `ETHUSDT`, etc.
 - Nécessite un compte Bitget avec des clés API Futures (en mode démo ou réel).
