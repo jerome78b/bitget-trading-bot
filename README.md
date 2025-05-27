@@ -14,7 +14,7 @@ The bot can run in **test/demo mode** or in **live trading**, with **Telegram no
 ---
 
 ## ⚠️ Requirements & Compatibility
-
+- And account [Bitget](https://www.bitget.com/)
 - This bot is designed for **Futures trading only** on Bitget (not Spot).
 - Only compatible with **USDT-based pairs**, such as `BTCUSDT`, `ETHUSDT`, etc.
 - Requires a Bitget account with Futures API keys (demo or mainnet).
