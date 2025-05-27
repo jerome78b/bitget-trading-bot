@@ -31,23 +31,61 @@ The bot can run in **test/demo mode** or in **live trading**, with **Telegram no
 - 🌐 Smart Internet disconnection handling (auto-recovery)
 - 🛠️ Telegram integration (real-time alerts and notifications)
 - 🧪 TEST mode available for easy simulated trades
-- 
+
+## 🧱 Bot Architecture
+
+The bot is structured around robust modules:
+
+- **Market Analysis**: Fetches candles using CCXT + calculates Bollinger Bands and RSI
+- **Signal Detection**: Customizable strategy (`check_signal_bb_rsi`)
+- **Order Execution**: Market orders + margin mode and leverage management
+- **Position Protection**: Automated TP/SL and TPP (Partial Take Profit)
+- **Continuous Monitoring**: Live dashboard with dynamic console display
+```
+ ⚙️  Levier réglé : 3x
+ ================== Version 8.8 ==================
+ 📅 2025-05-27 21:03:49 | Prix ETHUSDT : 2676.00 USDT
+ 🏦 Total capital       : 5109.23 USDT
+ 💰 Solde en USDT       : 5222.44 USDT
+ 💸 disponible          : 138.73 USDT
+ ⚖️ P&L non réalisé     : 113.21 USDT
+ 📏 Initial Margin      : 4970.50 USDT
+ 📊 Initial Margin %    : 97.28 %
+ ==================================================
+ 📌 Position  : SHORT | Entrée : 2696.47 | Qté : 5.53 ETHUSDT
+ 🎯 TP actif  : 2669.51
+ 🛡️ SL actif  : 2736.92
+ 🔄 Sortie partielle : en attente
+ ```
+- **Communication** : notifications Telegram, logs locaux
+
+![Notifications Telegram](./assets/telegram-demo.png/)
 ---
 
 ## 🧩 Customizable strategy
 
-The bot uses by default a strategy based on:
+The bot is based by default on a proven technical strategy that combines three key tools:
 
-- **Bollinger Bands**
-- **RSI (Relative Strength Index)**
-- A **volatility filter** based on band width
+🔷 **1. Bollinger Bands**
+- Used to visualize **overbought/oversold** zones based on market volatility.
+- The bot looks for **band breakouts**, which can indicate a potential trade entry.
+
+🔶 **2. RSI (Relative Strength Index)**
+- Helps **filter out false signals**.
+- RSI must confirm the trend direction:
+  - 📈 For a **LONG** entry, RSI must rise above a threshold (e.g., > 40).
+  - 📉 For a **SHORT** entry, RSI must fall below a threshold (e.g., < 60).
+
+♦️ **3. Volatility Filter (bot-specific)**
+- Based on the **width of the Bollinger Bands**.
+- Trades are only allowed when volatility is high enough, helping avoid flat market conditions.
 
 But it's **designed to be easily modified**:  
 ➡️ You can adapt **your own trading strategy** without touching the bot's core logic.
 
 ## 🔁 How to do it?
 
-In the `BitgetBotV8.7.py` file, the following function determines the signals:
+In the `BitgetBotV8.8.py` file, the following function determines the signals:
 
 ```python
 def check_signal_bb_rsi(df):
@@ -59,10 +97,18 @@ def check_signal_bb_rsi(df):
 ## 📦 Installation
 ```
 git clone https://github.com/jerome78b/bitget-trading-bot.git
+```
+```
 cd bitget-trading-bot
+```
+```
+python -m venv venv
+```
+```
 pip install -r requirements.txt
 ```
 ---
+
 ## 🛠️ Configuration & Variables
 
 You can customize the bot directly by editing the top of the `BitgetBot.py` script.
