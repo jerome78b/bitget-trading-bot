@@ -5,6 +5,7 @@
 ![Bot](https://img.shields.io/badge/Type-Trading%20Bot-blueviolet)
 ![QA Ready](https://img.shields.io/badge/QA--Friendly-Yes-success)
 
+## ⚠️Utilisé à ses propres risques⚠️
 > 🇬🇧 Read in English: [README.md](README.md)
 
 Bot de trading automatisé pour la plateforme **Bitget**, écrit en **Python**.  
