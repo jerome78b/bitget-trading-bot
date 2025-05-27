@@ -40,6 +40,15 @@ Le bot est organisé autour de modules robustes :
 
 - **Analyse de marché** : récupération des bougies avec CCXT + calcul Bollinger/RSI
 - **Détection de signal** : stratégie personnalisable (`check_signal_bb_rsi`)
+```
+==================================================
+✅ Low RSI    : 25.71 < 60
+📏 Upper Band: 2698.01, Lower Band: 2647.63, SMA: 2672.82
+⚠️ Low volatility: width 0.0189 ≤ threshold 0.0270
+➡️ Price between bands: 2661.57
+👀 Waiting for the next signal...
+==================================================
+```
 - **Exécution des ordres** : market order + gestion du mode marge et levier
 - **Protection des positions** : TP/SL automatiques, TPP (Take Profit Partiel)
 - **Surveillance continue** : dashboard en direct, affichage console dynamique
