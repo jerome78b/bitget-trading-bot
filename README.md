@@ -38,17 +38,26 @@ The bot is structured around robust modules:
 
 - **Market Analysis**: Fetches candles using CCXT + calculates Bollinger Bands and RSI
 - **Signal Detection**: Customizable strategy (`check_signal_bb_rsi`)
+```
+==================================================
+✅ Low RSI    : 25.71 < 60
+📏 Upper Band: 2698.01, Lower Band: 2647.63, SMA: 2672.82
+⚠️ Low volatility: width 0.0189 ≤ threshold 0.0270
+➡️ Price between bands: 2661.57
+👀 Waiting for the next signal...
+==================================================
+```
 - **Order Execution**: Market orders + margin mode and leverage management
 - **Position Protection**: Automated TP/SL and TPP (Partial Take Profit)
 - **Continuous Monitoring**: Live dashboard with dynamic console display
 ```
- ⚙️  Levier réglé : 3x
+ ⚙️ Leverage set : 3x
  ================== Version 8.8 ==================
  📅 2025-05-27 21:03:49 | Prix ETHUSDT : 2676.00 USDT
  🏦 Total capital       : 5109.23 USDT
- 💰 Solde en USDT       : 5222.44 USDT
- 💸 disponible          : 138.73 USDT
- ⚖️ P&L non réalisé     : 113.21 USDT
+ 💰 USDT Balance       : 5222.44 USDT
+ 💸 Available Funds     : 138.73 USDT
+ ⚖️ Unrealized P&L     : 113.21 USDT
  📏 Initial Margin      : 4970.50 USDT
  📊 Initial Margin %    : 97.28 %
  ==================================================
