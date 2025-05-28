@@ -186,12 +186,12 @@ To ensure the bot works properly, you need to generate a Bitget API key with the
 
 ![configuration API](./assets/API-demo-ENG.png/)
 
-💡 **Ces droits sont nécessaires pour que le bot puisse :**  
+💡 **These permissions are required for the bot to :**  
 
-- Récupérer les positions
-- Placer/modifier les ordres TP/SL
-- Gérer le levier et le mode de marge
-- Suivre l’équity et les performances en live
+- Retrieve open positions
+- Place/modify TP (Take Profit) and SL (Stop Loss) orders
+- Manage leverage and margin mode
+- Monitor equity and live performance
 
 ## ❓ Why use this bot?
 
