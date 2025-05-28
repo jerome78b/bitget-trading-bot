@@ -149,7 +149,8 @@ TELEGRAM_CHAT_ID=your_chat_id
 To ensure the bot works properly, you need to generate a Bitget API key with the correct permissions.  
 👉 Go to Bitget **API Management**.  
 ➡️ Click on **"Create API Key"** or edit an existing key.  
-✅ Select the following permissions:    
+✅ Select the following permissions :
+    
 ![configuration API](./assets/API-demo-ENG.png/)
 
 💡 **Ces droits sont nécessaires pour que le bot puisse :**  
