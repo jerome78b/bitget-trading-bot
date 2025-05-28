@@ -150,10 +150,11 @@ TELEGRAM_CHAT_ID=your_chat_id
 ## 🔐 Configuration des clés API Bitget ⚠️
 
 Pour que le bot fonctionne correctement, vous devez générer une clé API Bitget avec les autorisations appropriées.
-👉 Rendez-vous dans API Management Bitget
-➡️ Cliquez sur "Créer une clé API" ou modifiez une clé existante.
+👉 Rendez-vous dans **API Management Bitget**.
+➡️ Cliquez sur **"Créer une clé API"** ou **modifiez une clé existante**.
 ✅ Sélectionnez les autorisations suivantes :
 ![configuration API](./assets/API-demo.png/)
+
 💡 Ces droits sont nécessaires pour que le bot puisse :
 
 - Récupérer les positions
