@@ -4,6 +4,7 @@
 ![Status](https://img.shields.io/badge/Status-Actively--Maintained-brightgreen)
 ![Bot](https://img.shields.io/badge/Type-Trading%20Bot-blueviolet)
 ![QA Ready](https://img.shields.io/badge/QA--Friendly-Yes-success)
+
 ## ⚠️ Used at one's own risk ⚠️
 > 🇫🇷 Lire en français : [README.FR.md](README.FR.md)
 > 
@@ -14,6 +15,7 @@ The bot can run in **test/demo mode** or in **live trading**, with **Telegram no
 ---
 
 ## ⚠️ Requirements & Compatibility
+
 - And account [Bitget](https://www.bitget.com/)
 - This bot is designed for **Futures trading only** on Bitget (not Spot).
 - Only compatible with **USDT-based pairs**, such as `BTCUSDT`, `ETHUSDT`, etc.
@@ -122,18 +124,49 @@ pip install -r requirements.txt
 
 You can customize the bot directly by editing the top of the `BitgetBot.py` script.
 
-Here are the key configuration variables and what they do:
+Here are the key configuration variables and what they do:  
 
-| Variable        | Type   | Description                                                                 |
-|-----------------|--------|-----------------------------------------------------------------------------|
-| `USE_DEMO`      | `bool` | `True` = use Bitget demo environment (testnet), `False` = live trading     |
-| `TEST_MODE`     | `bool` | `True` = simulates a trade on each run, `False` = uses real BB + RSI strategy |
-| `TEST_SIDE`     | `str`  | If `TEST_MODE = True`, choose `'buy'` or `'sell'` for simulated position     |
-| `USE_TPP`       | `bool` | `True` = activates Partial Take Profit (TPP), `False` = disables it         |
-| `SYMBOL`        | `str`  | USDT-based pair to trade, e.g. `'ETHUSDT'`, `'SOLUSDT'`                      |
-| `TIMEFRAME`     | `str`  | Candlestick timeframe for analysis, e.g. `'1m'`, `'5m'`, `'15m'`, `'1h'`     |
-| `LEVERAGE`      | `int`  | Leverage level applied to the position (e.g. `3`, `5`, `10`)                 |
-| `CAPITAL_ENGAGEMENT`      | `float`  |Percentage of capital to allocate (10%) (ex :`0.10`)                   |
+🧰 **General Bot Configuration**
+
+| Variable           | Type   | Description                                                                     |
+| ------------------ | ------ | ------------------------------------------------------------------------------- |
+| `USE_DEMO`         | `bool` | `True` = demo mode (testnet), `False` = live trading                            |
+| `TEST_MODE`        | `bool` | `True` = forces a trade every cycle (for testing), `False` = runs real strategy |
+| `TEST_SIDE`        | `str`  | Trade side if `TEST_MODE = True` (`'buy'` or `'sell'`)                          |
+| `SYMBOL`           | `str`  | Trading pair, e.g., `'ETHUSDT'`, `'BTCUSDT'`                                    |
+| `TIMEFRAME`        | `str`  | Candle timeframe, e.g., `'1m'`, `'15m'`, `'1h'`                                 |
+| `LEVERAGE`         | `int`  | Leverage applied to positions, e.g., `'3'` = 3x leverage                        |
+| `MARGIN_MODE`      | `str`  | Margin mode: `'crossed'` or `'isolated'`                                        |
+| `CYCLE_COUNT`      | `int`  | Number of cycles before automatic console cleanup                               |
+| `LOOP_INTERVAL`    | `int`  | Time (in seconds) between each main loop iteration                              |
+| `TRACK_SIGNALS`    | `bool` | `True` = enable signal tracking, `False` = disable it                           |
+| `TELEGRAM_ENABLED` | `bool` | `True` = send alerts via Telegram, `False` = no notifications                   |
+
+🎯 **Position Management & Strategy Settings**
+
+| Variable                | Type    | Description                                                             |
+| ----------------------- | ------- | ----------------------------------------------------------------------- |
+| `CAPITAL_ENGAGEMENT`    | `float` | Percentage of capital to allocate per trade (e.g., `0.10` for 10%)      |
+| `USE_TPP`               | `bool`  | `True` = enables Partial Take Profit (TPP), `False` = fully disables it |
+| `TRAIL_TRIGGER`         | `float` | Trailing stop trigger threshold (e.g., `0.023` for 2.3%)                |
+| `PARTIAL_EXIT_FRACTION` | `float` | Portion of the position to exit partially (e.g., `0.85` for 85%)        |
+| `TP_PERCENT_LONG`       | `float` | Take Profit percentage for long positions (e.g., `4.1`)                 |
+| `SL_PERCENT_LONG`       | `float` | Stop Loss percentage for long positions (e.g., `1.5`)                   |
+| `TP_PERCENT_SHORT`      | `float` | Take Profit percentage for short positions (e.g., `4.0`)                |
+| `SL_PERCENT_SHORT`      | `float` | Stop Loss percentage for short positions (e.g., `1.5`)                  |
+
+📊 **Technical Indicator Settings**
+
+| Variable             | Type    | Description                                                          |
+| -------------------- | ------- | -------------------------------------------------------------------- |
+| `BOLL_PERIOD`        | `int`   | Period used for **Bollinger Bands** calculation (e.g., `34`)         |
+| `BOLL_MULT`          | `float` | Standard deviation multiplier to set the width of Bollinger Bands    |
+| `RSI_PERIOD`         | `int`   | Period used for calculating the **RSI** (Relative Strength Index)    |
+| `RSI_HIGH_THRESHOLD` | `int`   | Threshold above which RSI confirms a **LONG** signal (e.g., `> 40`)  |
+| `RSI_LOW_THRESHOLD`  | `int`   | Threshold below which RSI confirms a **SHORT** signal (e.g., `< 60`) |
+| `WIDTH_PERIOD`       | `int`   | Period used to measure **bandwidth** (used as a volatility filter)   |
+| `VOL_MULT`           | `float` | Multiplier applied to volatility to validate trade conditions        |
+
 
 ## ✏️ Configuration
 ```
@@ -150,7 +183,7 @@ To ensure the bot works properly, you need to generate a Bitget API key with the
 👉 Go to Bitget **API Management**.  
 ➡️ Click on **"Create API Key"** or edit an existing key.  
 ✅ Select the following permissions :
-    
+
 ![configuration API](./assets/API-demo-ENG.png/)
 
 💡 **Ces droits sont nécessaires pour que le bot puisse :**  
