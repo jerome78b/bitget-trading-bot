@@ -125,18 +125,49 @@ pip install -r requirements.txt
 
 Vous pouvez personnaliser le bot en modifiant les variables situées en haut du fichier `BitgetBot.py`.
 
-Voici les principales variables de configuration et leur rôle :
+Voici les principales variables de configuration et leur rôle :  
+
+🧰 **Configuration générale du bot**
+
+| Variable             | Type    | Description                                                                          |
+| -------------------- | ------- | ------------------------------------------------------------------------------------ |
+| `USE_DEMO`           | `bool`  | `True` = mode démo (testnet), `False` = trading réel                                 |
+| `TEST_MODE`          | `bool`  | `True` = force un trade à chaque cycle (test), `False` = exécute la stratégie réelle |
+| `TEST_SIDE`          | `str`   | Côté de test si `TEST_MODE = True` (`'buy'` ou `'sell'`)                             |
+| `SYMBOL`             | `str`   | Paire de trading, ex : `'ETHUSDT'`, `'BTCUSDT'`                                      |
+| `TIMEFRAME`          | `str`   | Période des bougies utilisées, ex : `'1m'`, `'15m'`, `'1h'`                          |
+| `LEVERAGE`           | `int`   | Levier appliqué aux positions                                                        |
+| `MARGIN_MODE`        | `str`   | Mode de marge utilisé : `'crossed'` ou `'isolated'`                                  |
+| `CYCLE_COUNT`        | `int`   | Nombre de cycles avant nettoyage automatique de la console                           |
+| `LOOP_INTERVAL`      | `int`   | Temps (en secondes) entre chaque boucle principale du bot                            |
+| `TRACK_SIGNALS`      | `bool`  | `True` = active le suivi des signaux, `False` = le désactive                         |
+| `TELEGRAM_ENABLED`   | `bool`  | `True` = envoie des alertes via Telegram, `False` = aucune notification              |
+
+🎯 **Paramètres de gestion des positions & stratégie** 
 
 | Variable        | Type   | Description                                                                 |
 |-----------------|--------|-----------------------------------------------------------------------------|
-| `USE_DEMO`      | `bool` | `True` = utilise l’environnement démo de Bitget (testnet), `False` = trading réel |
-| `TEST_MODE`     | `bool` | `True` = force un trade simulé à chaque exécution, `False` = active la stratégie réelle (BB + RSI) |
-| `TEST_SIDE`     | `str`  | Si `TEST_MODE = True`, permet de choisir `'buy'` ou `'sell'` pour le test      |
+| `CAPITAL_ENGAGEMENT` | `float` | Pourcentage du capital à engager par trade (ex : `0.10` pour 10%)                    |
 | `USE_TPP`       | `bool` | `True` = active le Take Profit Partiel (TPP), `False` = le désactive entièrement |
-| `SYMBOL`        | `str`  | Paire en USDT à trader, ex : `'ETHUSDT'`, `'SOLUSDT'`                          |
-| `TIMEFRAME`     | `str`  | Période des bougies utilisées, ex : `'1m'`, `'5m'`, `'15m'`, `'1h'`            |
-| `LEVERAGE`      | `int`  | Levier appliqué à la position (ex : `3`, `5`, `10`)                           |
-| `CAPITAL_ENGAGEMENT`      | `float`  |Pourcentage du capital à allouer (10%) (ex :`0.10`)                   |
+| `TRAIL_TRIGGER`        | `float` | Seuil (%) de déclenchement du trailing stop pour le TPP (ex: `0.023` pour 2.3%)             |
+| `PARTIAL_EXIT_FRACTION`| `float` | Pourcentage de la position à sortir partiellement (ex: `0.85` pour 85%)                     |
+| `TP_PERCENT_LONG`      | `float` | Pourcentage de Take Profit pour les positions long (ex: `4.1`)                              |
+| `SL_PERCENT_LONG`      | `float` | Pourcentage de Stop Loss pour les positions long (ex: `1.5`)                                |
+| `TP_PERCENT_SHORT`     | `float` | Pourcentage de Take Profit pour les positions short (ex: `4.0`)                             |
+| `SL_PERCENT_SHORT`     | `float` | Pourcentage de Stop Loss pour les positions short (ex: `1.5`)                               |
+
+📊 **Paramètres des indicateurs techniques**
+
+| Variable             | Type    | Description                                                                    |
+| -------------------- | ------- | ------------------------------------------------------------------------------ |
+| `BOLL_PERIOD`        | `int`   | Période utilisée pour le calcul des **Bandes de Bollinger** (ex : `34`)        |
+| `BOLL_MULT`          | `float` | Multiplicateur de l’écart-type pour définir la largeur des bandes              |
+| `RSI_PERIOD`         | `int`   | Période pour le calcul du **RSI** (Relative Strength Index)                    |
+| `RSI_HIGH_THRESHOLD` | `int`   | Seuil à partir duquel le RSI valide un signal **LONG** (ex : `> 40`)           |
+| `RSI_LOW_THRESHOLD`  | `int`   | Seuil en dessous duquel le RSI valide un signal **SHORT** (ex : `< 60`)        |
+| `WIDTH_PERIOD`       | `int`   | Période utilisée pour mesurer la **largeur des bandes** (filtre de volatilité) |
+| `VOL_MULT`           | `float` | Multiplicateur appliqué à la volatilité pour confirmer les conditions d’entrée |
+
 
 ## ✏️ Configuration
 ```
