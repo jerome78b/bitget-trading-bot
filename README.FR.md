@@ -146,7 +146,7 @@ PASSPHRASE=your_passphrase
 TELEGRAM_TOKEN=your_telegram_token
 TELEGRAM_CHAT_ID=your_chat_id
 ```
----
+
 ## 🔐 Configuration des clés API Bitget ⚠️
 
 Pour que le bot fonctionne correctement, vous devez générer une clé API Bitget avec les autorisations appropriées.  
@@ -164,7 +164,7 @@ Pour que le bot fonctionne correctement, vous devez générer une clé API Bitge
 - Gérer le levier et le mode de marge
 
 - Suivre l’équity et les performances en live
----
+
 ## ❓ Pourquoi utiliser ce bot ?
 
 Ce projet a été conçu pour rendre le **trading automatisé sur Bitget simple, modulable et prêt à l’emploi**, notamment pour les débutants ou les profils QA/développeurs qui souhaitent :
