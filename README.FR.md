@@ -145,28 +145,28 @@ Voici les principales variables de configuration et leur rôle :
 
 🎯 **Paramètres de gestion des positions & stratégie** 
 
-| Variable                 | Type    | Description                                                                                 |
-|--------------------------| ------- |---------------------------------------------------------------------------------------------|
-| `CAPITAL_ENGAGEMENT`     | `float` | Pourcentage du capital à engager par trade (ex : `0.10` pour 10%)                           |
-| `USE_TPP`                | `bool`  | `True` = active le Take Profit Partiel (TPP), `False` = le désactive entièrement            |
-| `TRAIL_TRIGGER`          | `float` | Seuil (%) de déclenchement du trailing stop pour le TPP (ex: `0.023` pour 2.3%)             |
-| `PARTIAL_EXIT_FRACTION`  | `float` | Pourcentage de la position à sortir partiellement (ex: `0.85` pour 85%)                     |
-| `TP_PERCENT_LONG`        | `float` | Pourcentage de Take Profit pour les positions long (ex: `4.1`)                              |
-| `SL_PERCENT_LONG`        | `float` | Pourcentage de Stop Loss pour les positions long (ex: `1.5`)                                |
-| `TP_PERCENT_SHORT`       | `float` | Pourcentage de Take Profit pour les positions short (ex: `4.0`)                             |
-| `SL_PERCENT_SHORT`       | `float` | Pourcentage de Stop Loss pour les positions short (ex: `1.5`)                               |
+| Variable                 | Type    | Description                                                                      |
+|--------------------------| ------- |----------------------------------------------------------------------------------|
+| `CAPITAL_ENGAGEMENT`     | `float` | Pourcentage du capital à engager par trade (ex : `0.10` pour 10%)                |
+| `USE_TPP`                | `bool`  | `True` = active le Take Profit Partiel (TPP), `False` = le désactive entièrement |
+| `TRAIL_TRIGGER`          | `float` | Seuil (%) de déclenchement du trailing stop pour le TPP (ex: `0.023` pour 2.3%)  |
+| `PARTIAL_EXIT_FRACTION`  | `float` | Pourcentage de la position à sortir partiellement (ex: `0.85` pour 85%)          |
+| `TP_PERCENT_LONG`        | `float` | Pourcentage de Take Profit pour les positions long (ex: `4.1`)                   |
+| `SL_PERCENT_LONG`        | `float` | Pourcentage de Stop Loss pour les positions long (ex: `1.5`)                     |
+| `TP_PERCENT_SHORT`       | `float` | Pourcentage de Take Profit pour les positions short (ex: `4.0`)                  |
+| `SL_PERCENT_SHORT`       | `float` | Pourcentage de Stop Loss pour les positions short (ex: `1.5`)                    |
 
 📊 **Paramètres des indicateurs techniques**
 
-| Variable             | Type    | Description                                                                    |
-| -------------------- | ------- | ------------------------------------------------------------------------------ |
-| `BOLL_PERIOD`        | `int`   | Période utilisée pour le calcul des **Bandes de Bollinger** (ex : `34`)        |
-| `BOLL_MULT`          | `float` | Multiplicateur de l’écart-type pour définir la largeur des bandes              |
-| `RSI_PERIOD`         | `int`   | Période pour le calcul du **RSI** (Relative Strength Index)                    |
-| `RSI_HIGH_THRESHOLD` | `int`   | Seuil à partir duquel le RSI valide un signal **LONG** (ex : `> 40`)           |
-| `RSI_LOW_THRESHOLD`  | `int`   | Seuil en dessous duquel le RSI valide un signal **SHORT** (ex : `< 60`)        |
-| `WIDTH_PERIOD`       | `int`   | Période utilisée pour mesurer la **largeur des bandes** (filtre de volatilité) |
-| `VOL_MULT`           | `float` | Multiplicateur appliqué à la volatilité pour confirmer les conditions d’entrée |
+| Variable             | Type    | Description                                                                          |
+| -------------------- | ------- | ------------------------------------------------------------------------------------ |
+| `BOLL_PERIOD`        | `int`   | Période utilisée pour le calcul des **Bandes de Bollinger** (ex : `34`)              |
+| `BOLL_MULT`          | `float` | Multiplicateur de l’écart-type pour définir la largeur des bandes                    |
+| `RSI_PERIOD`         | `int`   | Période pour le calcul du **RSI** (Relative Strength Index)                          |
+| `RSI_HIGH_THRESHOLD` | `int`   | Seuil à partir duquel le RSI valide un signal **LONG** (ex : `> 40`)                 |
+| `RSI_LOW_THRESHOLD`  | `int`   | Seuil en dessous duquel le RSI valide un signal **SHORT** (ex : `< 60`)              |
+| `WIDTH_PERIOD`       | `int`   | Période utilisée pour mesurer la **largeur des bandes** (filtre de volatilité)       |
+| `VOL_MULT`           | `float` | Multiplicateur appliqué à la volatilité pour confirmer les conditions d’entrée       |
 
 
 ## ✏️ Configuration
