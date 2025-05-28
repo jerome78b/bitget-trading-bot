@@ -144,6 +144,21 @@ TELEGRAM_TOKEN=your_telegram_token
 TELEGRAM_CHAT_ID=your_chat_id
 
 ```
+## 🔐 Bitget API Key Configuration ⚠️
+
+To ensure the bot works properly, you need to generate a Bitget API key with the correct permissions.  
+👉 Go to Bitget **API Management**.  
+➡️ Click on **"Create API Key"** or edit an existing key.  
+✅ Select the following permissions:    
+![configuration API](./assets/API-demo-ENG.png/)
+
+💡 **Ces droits sont nécessaires pour que le bot puisse :**  
+
+- Récupérer les positions
+- Placer/modifier les ordres TP/SL
+- Gérer le levier et le mode de marge
+- Suivre l’équity et les performances en live
+
 ## ❓ Why use this bot?
 
 This project is designed to make Bitget trading automation **simple, flexible, and ready to use**, especially for beginners or QA/dev profiles who want:
