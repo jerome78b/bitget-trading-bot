@@ -42,11 +42,11 @@ Le bot est organisé autour de modules robustes :
 - **Détection de signal** : stratégie personnalisable (`check_signal_bb_rsi`)
 ```
 ==================================================
-✅ Low RSI    : 25.71 < 60
-📏 Upper Band: 2698.01, Lower Band: 2647.63, SMA: 2672.82
-⚠️ Low volatility: width 0.0189 ≤ threshold 0.0270
-➡️ Price between bands: 2661.57
-👀 Waiting for the next signal...
+✅ RSI faible : 25,71 < 60
+📏 Bande supérieure : 2 698,01, Bande inférieure : 2 647,63, MMS : 2 672,82
+⚠️ Faible volatilité : largeur 0,0189 ≤ seuil 0,0270
+➡️ Prix entre les bandes : 2 661,57
+👀 En attente du prochain signal…
 ==================================================
 ```
 - **Exécution des ordres** : market order + gestion du mode marge et levier
