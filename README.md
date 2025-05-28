@@ -170,11 +170,11 @@ Here are the key configuration variables and what they do:
 
 ## ✏️ Configuration
 ```
-API_KEY=your_api_key
-API_SECRET=your_api_secret
-PASSPHRASE=your_passphrase
-TELEGRAM_TOKEN=your_telegram_token
-TELEGRAM_CHAT_ID=your_chat_id
+API_KEY = "your_api_key"
+API_SECRET = "your_api_secret" 
+PASSPHRASE = "your_passphrase"
+TELEGRAM_TOKEN = "your_telegram_token"
+TELEGRAM_CHAT_ID = "your_chat_id"
 
 ```
 ## 🔐 Bitget API Key Configuration ⚠️
