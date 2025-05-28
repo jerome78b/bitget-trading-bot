@@ -68,7 +68,7 @@ The bot is structured around robust modules:
  ```
 - **Communication** : notifications Telegram, logs locaux
 
-![Notifications Telegram](./assets/telegram-demo.png/)
+![Notifications Telegram](./assets/telegram-demo-ENG.png/)
 ---
 
 ## 🧩 Customizable strategy
