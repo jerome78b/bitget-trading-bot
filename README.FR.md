@@ -136,7 +136,7 @@ Voici les principales variables de configuration et leur rôle :
 | `TEST_SIDE`          | `str`   | Côté de test si `TEST_MODE = True` (`'buy'` ou `'sell'`)                             |
 | `SYMBOL`             | `str`   | Paire de trading, ex : `'ETHUSDT'`, `'BTCUSDT'`                                      |
 | `TIMEFRAME`          | `str`   | Période des bougies utilisées, ex : `'1m'`, `'15m'`, `'1h'`                          |
-| `LEVERAGE`           | `int`   | Levier appliqué aux positions                                                        |
+| `LEVERAGE`           | `int`   | Levier appliqué aux positions, ex : `'3'` = levier X3 sur la position                |
 | `MARGIN_MODE`        | `str`   | Mode de marge utilisé : `'crossed'` ou `'isolated'`                                  |
 | `CYCLE_COUNT`        | `int`   | Nombre de cycles avant nettoyage automatique de la console                           |
 | `LOOP_INTERVAL`      | `int`   | Temps (en secondes) entre chaque boucle principale du bot                            |
