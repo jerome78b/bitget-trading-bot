@@ -145,16 +145,16 @@ Voici les principales variables de configuration et leur rôle :
 
 🎯 **Paramètres de gestion des positions & stratégie** 
 
-| Variable        | Type   | Description                                                                 |
-|-----------------|--------|-----------------------------------------------------------------------------|
-| `CAPITAL_ENGAGEMENT` | `float` | Pourcentage du capital à engager par trade (ex : `0.10` pour 10%)                    |
-| `USE_TPP`       | `bool` | `True` = active le Take Profit Partiel (TPP), `False` = le désactive entièrement |
-| `TRAIL_TRIGGER`        | `float` | Seuil (%) de déclenchement du trailing stop pour le TPP (ex: `0.023` pour 2.3%)             |
-| `PARTIAL_EXIT_FRACTION`| `float` | Pourcentage de la position à sortir partiellement (ex: `0.85` pour 85%)                     |
-| `TP_PERCENT_LONG`      | `float` | Pourcentage de Take Profit pour les positions long (ex: `4.1`)                              |
-| `SL_PERCENT_LONG`      | `float` | Pourcentage de Stop Loss pour les positions long (ex: `1.5`)                                |
-| `TP_PERCENT_SHORT`     | `float` | Pourcentage de Take Profit pour les positions short (ex: `4.0`)                             |
-| `SL_PERCENT_SHORT`     | `float` | Pourcentage de Stop Loss pour les positions short (ex: `1.5`)                               |
+| Variable                 | Type    | Description                                                                                 |
+|--------------------------| ------- |---------------------------------------------------------------------------------------------|
+| `CAPITAL_ENGAGEMENT`     | `float` | Pourcentage du capital à engager par trade (ex : `0.10` pour 10%)                           |
+| `USE_TPP`                | `bool`  | `True` = active le Take Profit Partiel (TPP), `False` = le désactive entièrement            |
+| `TRAIL_TRIGGER`          | `float` | Seuil (%) de déclenchement du trailing stop pour le TPP (ex: `0.023` pour 2.3%)             |
+| `PARTIAL_EXIT_FRACTION`  | `float` | Pourcentage de la position à sortir partiellement (ex: `0.85` pour 85%)                     |
+| `TP_PERCENT_LONG`        | `float` | Pourcentage de Take Profit pour les positions long (ex: `4.1`)                              |
+| `SL_PERCENT_LONG`        | `float` | Pourcentage de Stop Loss pour les positions long (ex: `1.5`)                                |
+| `TP_PERCENT_SHORT`       | `float` | Pourcentage de Take Profit pour les positions short (ex: `4.0`)                             |
+| `SL_PERCENT_SHORT`       | `float` | Pourcentage de Stop Loss pour les positions short (ex: `1.5`)                               |
 
 📊 **Paramètres des indicateurs techniques**
 
