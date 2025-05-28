@@ -146,7 +146,7 @@ Voici les principales variables de configuration et leur rôle :
 🎯 **Paramètres de gestion des positions & stratégie** 
 
 | Variable                 | Type    | Description                                                                      |
-|--------------------------| ------- |----------------------------------------------------------------------------------|
+| ------------------------ | ------- | -------------------------------------------------------------------------------- |
 | `CAPITAL_ENGAGEMENT`     | `float` | Pourcentage du capital à engager par trade (ex : `0.10` pour 10%)                |
 | `USE_TPP`                | `bool`  | `True` = active le Take Profit Partiel (TPP), `False` = le désactive entièrement |
 | `TRAIL_TRIGGER`          | `float` | Seuil (%) de déclenchement du trailing stop pour le TPP (ex: `0.023` pour 2.3%)  |
