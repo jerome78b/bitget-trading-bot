@@ -155,14 +155,11 @@ Pour que le bot fonctionne correctement, vous devez générer une clé API Bitge
 ✅ Sélectionnez les autorisations suivantes :  
 ![configuration API](./assets/API-demo.png/)
 
-💡 Ces droits sont nécessaires pour que le bot puisse :  
+💡 **Ces droits sont nécessaires pour que le bot puisse :**  
 
 - Récupérer les positions
-
 - Placer/modifier les ordres TP/SL
-
 - Gérer le levier et le mode de marge
-
 - Suivre l’équity et les performances en live
 
 ## ❓ Pourquoi utiliser ce bot ?
