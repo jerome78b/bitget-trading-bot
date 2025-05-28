@@ -41,32 +41,30 @@ BOT_CHANGELOG = [
     "🧠 Complete migration to Futures candles via CCXT",
     "🌐 Smart network management",
 ]
-#========================================================#
-# === CONFIGURATION (Directly in the script) ===
-USE_DEMO = True       # Demo mode = True, Mainnet = False
-TEST_MODE = False     # False = run live strategy (BB + RSI), True = force a trade with TEST_SIDE without waiting for a signal
-TEST_SIDE = 'buy'     # 'buy' or 'sell' for test trades
-# =================================================
 
-TRACK_SIGNALS = True      # Set to False to disable signal tracking
-TELEGRAM_ENABLED = True   # Enable or disable Telegram notifications
-CYCLE_COUNT = 20          # Number of cycles before auto-clearing the console
-LOOP_INTERVAL = 60        # Seconds between each loop iteration
+###############################################################################
+##                                                                           ##
+##                   🛠️ Configuration & Variables              
+##                                                                           ##
+###############################################################################
 
-TELEGRAM_TOKEN = ""       # Your Telegram bot token
-TELEGRAM_CHAT_ID = ""     # Your Telegram chat ID
-API_KEY = ""
-API_SECRET = ""
-PASSPHRASE = ""          # API passphrase (if required)
-BASE_URL = "https://api.bitget.com"  
-#========================================================#
-SYMBOL = "ETHUSDT"
+# ======== 🧰 General Bot Configuration ======== #
+
+USE_DEMO = True              # Demo mode = True, Mainnet = False
+TEST_MODE = False            # False = run live strategy (BB + RSI), True = force a trade with TEST_SIDE without waiting for a signal
+TEST_SIDE = 'buy'            # 'buy' or 'sell' for test trades
+SYMBOL = "ETHUSDT"           # Trading pair, e.g., 'ETHUSDT', 'BTCUSDT'
 TIMEFRAME = "15m"            # '15m', '30m', '45m', '1h', etc.
 LEVERAGE = 3                 # Desired leverage
 MARGIN_MODE = 'crossed'      # 'crossed' or 'isolated'
-CAPITAL_ENGAGEMENT = 0.10    # Percentage of capital to allocate (10%)
-# ================================================================
+CYCLE_COUNT = 20          # Number of cycles before auto-clearing the console
+LOOP_INTERVAL = 60        # Seconds between each loop iteration
+TRACK_SIGNALS = True      # Set to False to disable signal tracking
+TELEGRAM_ENABLED = True   # Enable or disable Telegram notifications
 
+# ======== 🎯 Position Management & Strategy Settings ======== #
+
+CAPITAL_ENGAGEMENT = 0.10    # Percentage of capital to allocate (10%)
 USE_TPP = False                 # False = disable, True = enable Partial Take Profit
 TRAIL_TRIGGER = 2.3 / 100       # Trailing trigger threshold (2.3%)
 PARTIAL_EXIT_FRACTION = 0.85    # Fraction of position to exit (85%)
@@ -74,15 +72,28 @@ TP_PERCENT_LONG = 4.1           # Take Profit percentage for long positions
 SL_PERCENT_LONG = 1.5           # Stop Loss percentage for long positions
 TP_PERCENT_SHORT = 4.0          # Take Profit percentage for short positions
 SL_PERCENT_SHORT = 1.5          # Stop Loss percentage for short positions
-#=====================Indicators=========================#
-BOLL_PERIOD = 34
-BOLL_MULT = 2.0
-RSI_PERIOD = 14
-RSI_HIGH_THRESHOLD = 40         # Pour LONG : RSI > 40
-RSI_LOW_THRESHOLD = 60          # Pour SHORT : RSI < 60
-WIDTH_PERIOD = 21
-VOL_MULT = 1.0
+
+# ======== 📊 Technical Indicator Settings ======== #
+
+BOLL_PERIOD = 34               # Period used for Bollinger Bands calculation (e.g., 34)
+BOLL_MULT = 2.0                # Standard deviation multiplier to set the width of Bollinger Bands
+RSI_PERIOD = 14                # Period used for calculating the RSI (Relative Strength Index)
+RSI_HIGH_THRESHOLD = 40        # Threshold above which RSI confirms a LONG signal (e.g., > 40)      
+RSI_LOW_THRESHOLD = 60         # Threshold below which RSI confirms a SHORT signal (e.g., < 60)        
+WIDTH_PERIOD = 21              # Period used to measure bandwidth (used as a volatility filter)
+VOL_MULT = 1.0                 # Multiplier applied to volatility to validate trade conditions
+
+# ======== ✏️ Configuration ======== #
+
+TELEGRAM_TOKEN = "your_api_key"       
+TELEGRAM_CHAT_ID = "your_api_secret"      
+API_KEY = "your_passphrase"
+API_SECRET = "your_telegram_token"
+PASSPHRASE = "your_chat_id"          
+
+
 #========================================================#
+BASE_URL = "https://api.bitget.com"  
 SYMBOL_CCXT = SYMBOL
 if "/" not in SYMBOL_CCXT:
     SYMBOL_CCXT = SYMBOL_CCXT.replace("USDT", "/USDT:USDT")
