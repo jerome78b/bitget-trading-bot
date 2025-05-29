@@ -31,12 +31,12 @@ RETRY_DELAY = 30   # Delay in seconds between retry attempts
 # =============================================================
 
 # === CURRENT BOT VERSION ===
-BOT_VERSION = "8.8"
-BOT_LAST_UPDATE = "2025-05-27"
+BOT_VERSION = "8.9"
+BOT_LAST_UPDATE = "2025-05-29"
 BOT_CHANGELOG = [
     "✨ Symbol precision handling",
     "📈 Signal analysis fix",
-    "🧩 TPP activation option",
+    "🐞 Fix erreur 40725",
     "🎯 Intelligent grouping of TP/SL errors",
     "🧠 Complete migration to Futures candles via CCXT",
     "🌐 Smart network management",
