@@ -1,4 +1,4 @@
-# 🤖 Bitget Trading Bot V8.8
+# 🤖 Bitget Trading Bot V8.9
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-Actively--Maintained-brightgreen)
@@ -54,7 +54,7 @@ The bot is structured around robust modules:
 - **Continuous Monitoring**: Live dashboard with dynamic console display
 ```
  ⚙️ Leverage set : 3x
- ================== Version 8.8 ==================
+ ================== Version 8.9 ==================
  📅 2025-05-27 21:03:49 | Prix ETHUSDT : 2676.00 USDT
  🏦 Total capital       : 5109.23 USDT
  💰 USDT Balance       : 5222.44 USDT
