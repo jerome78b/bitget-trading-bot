@@ -1,4 +1,4 @@
-# 🤖 Bitget Trading Bot V8.8
+# 🤖 Bitget Trading Bot V8.9
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-Actively--Maintained-brightgreen)
