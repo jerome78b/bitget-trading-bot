@@ -1,3 +1,12 @@
+## [V8.9] - 2025-05-29
+**🐞 Fix erreur 40725**
+- Ajout d'un mécanisme de retry/backoff sur l'erreur 40725 dans la fonction fetch_historical (jusqu'à 5 tentatives, délai exponentiel).
+- 🔧 Swap-only par défaut
+- Ajout de options.defaultType = "swap" et defaultSubType = "linear" pour forcer le chargement des marchés swap uniquement, évitant les appels margin.
+- ⚙️ Pré-chargement manuel des marchés
+- Utilisation de exchange.load_markets({"type":"swap"}) avant fetch_ohlcv pour isoler le chargement et améliorer la robustesse.
+- Debug HTTP disponible via le flag verbose pour inspecter requêtes et réponses.
+
 
 ## [V8.8] - 2025-05-27
 🖥️ **Affichage visuel des conditions sans signal**
