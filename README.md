@@ -22,7 +22,7 @@ The bot can run in **test/demo mode** or in **live trading**, with **Telegram no
 - Requires a Bitget account with Futures API keys (demo or mainnet).
 - Python 3.9 or higher is recommended.
   
-## 🚀 Main Features of the Bot
+## 🚀 Main Features 
 
 🧠 **Trading Strategy**
 - RSI (Relative Strength Index) implementation
