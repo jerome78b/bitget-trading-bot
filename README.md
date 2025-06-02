@@ -139,7 +139,7 @@ But it's **designed to be easily modified**:
 
 ## 🔁 How to do it?
 
-In the `BitgetBotV8.8.py` file, the following function determines the signals:
+In the `bitget_bot.py` file, the following function determines the signals:
 
 ```python
 def check_signal_bb_rsi(df):
