@@ -22,17 +22,60 @@ The bot can run in **test/demo mode** or in **live trading**, with **Telegram no
 - Requires a Bitget account with Futures API keys (demo or mainnet).
 - Python 3.9 or higher is recommended.
   
-## 🚀 Main Features
+## 🚀 Main Features of the Bot
 
-- 📈 Signal detection using Bollinger Bands + RSI + volatility filter
-- 🤖 Automated position opening (LONG / SHORT)
-- 🧠 TP / SL set as soon as a position is confirmed
-- 🏹 Configurable Partial Take Profit (TPP)
-- 📊 Live dashboard (price, equity, position info…)
-- 🔁 Main loop with real-time display, logging and checks
-- 🌐 Smart Internet disconnection handling (auto-recovery)
-- 🛠️ Telegram integration (real-time alerts and notifications)
-- 🧪 TEST mode available for easy simulated trades
+🧠 **Trading Strategy**
+- RSI (Relative Strength Index) implementation
+- Bollinger Bands implementation
+- Dynamic volatility filter (bandwidth + thresholds)
+- Logical combination of the 3 indicators to generate LONG/SHORT signals
+- Forced test mode (TEST_MODE + TEST_SIDE)
+
+💹 **Position Management**
+- Market order execution (buy/sell)
+- Automatic position sizing based on available capital, leverage, and price
+- Detection of already open positions
+- Detection of partial or closed positions
+- Display of active position info (entry price, size, TP/SL/TPP)
+
+🎯 **Risk Management**
+- Placement of full Take Profit (TP) and Stop Loss (SL) orders
+- Placement of Partial Take Profit (TPP) with custom quantity and price
+- Automatic re-placement of TP/SL if missing
+-Protection against misconfigured leverage or margin mode
+
+🌐 **Bitget API Integration**
+- Signed GET/POST requests using HMAC for security
+- Uses CCXT to fetch futures candles
+- Supports both demo and mainnet environments
+-Handles API errors (e.g., code 40725, network errors, empty responses)
+
+📊 **Observability & Interface**
+- Console dashboard with:
+- mark price
+- available capital
+- unrealized PnL
+- margin metrics
+- Local structured logging
+- Visual indicator diagnostics in console
+- Summary of detected / executed / ignored signals
+- Auto-clears the console every X cycles
+
+📩 **Alerts & Monitoring**
+- Telegram alerts for:
+- new positions
+- TP/SL placement
+- API errors
+- partial/full exits
+- Internet connection loss
+- Silent bug detection system via logs and alerts
+
+⚙️ **Architecture & Robustness**
+- Retry handling for network issues
+- Bitget connectivity check
+- Full lifecycle control of the bot
+- Fully autonomous mode: waits, detects, acts
+- Main entry point via __main__ with startup banner
 
 ## 🧱 Bot Architecture
 
