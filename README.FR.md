@@ -22,7 +22,7 @@ Le bot peut s’exécuter en **mode test/démo** ou **réel**, avec notification
 - Nécessite un compte Bitget avec des clés API Futures (en mode démo ou réel).
 - Python 3.9 ou version supérieure recommandé.
 
-## 🚀Fonctionnalités principales 
+## 🚀 Fonctionnalités principales 
 
 🧠 **Stratégie de trading**
 - Implémentation de RSI (Relative Strength Index)
