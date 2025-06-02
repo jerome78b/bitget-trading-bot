@@ -22,17 +22,60 @@ Le bot peut s’exécuter en **mode test/démo** ou **réel**, avec notification
 - Nécessite un compte Bitget avec des clés API Futures (en mode démo ou réel).
 - Python 3.9 ou version supérieure recommandé.
 
-## 🚀 Fonctionnalités principales
+## 🚀Fonctionnalités principales de ton bot
 
-- 📈 Détection de signaux : stratégie Bollinger + RSI + filtre de volatilité
-- 🤖 Prise de position automatique (LONG / SHORT)
-- 🧠 TP / SL posés dès la confirmation d'ouverture
-- 🏹 Take Profit Partiel (TPP) configurable
-- 📊 Dashboard complet en live (prix, equity, position…)
-- 🔁 Boucle principale avec vérifications, logs et affichage dynamique
-- 🌐 Gestion intelligente des coupures réseau (et reprise automatique)
-- 🛠️ Intégration Telegram (alertes et notifications en temps réel)
-- 🧪 Mode TEST intégré pour simuler un trade sans attendre de signal
+🧠 **Stratégie de trading**
+- Implémentation de RSI (Relative Strength Index)
+- Implémentation des bandes de Bollinger
+- Filtre de volatilité dynamique (width + seuils)
+- Combinaison logique des 3 pour générer un signal d’achat/vente (LONG/SHORT)
+- Mode test forcé (TEST_MODE + TEST_SIDE)
+
+💹 **Gestion des positions**
+- Ouverture d’ordre market (achat/vente)
+- Calcul automatique de la taille de position en fonction du capital dispo, levier, et prix
+- Détection si une position est déjà ouverte
+- Détection de position partielle ou clôturée
+- Affichage des informations de position en cours (prix, taille, TP/SL/TPP)
+
+🎯 **Gestion du risque**
+- Placement de Take Profit (TP) et Stop Loss (SL) complets
+- Placement de Take Profit Partiel (TPP) (quantité + prix)
+- Repose automatique du TP/SL s’ils sont absents
+- Protection contre levier mal configuré / mauvaise marge
+
+🌐 **Intégration API Bitget**
+- Appels GET/POST signés avec HMAC pour sécurité
+- Utilisation de CCXT pour charger les bougies futures
+- Support des environnements demo et mainnet
+- Gestion des erreurs API (code 40725, erreurs réseau, réponses vides)
+
+📊 **Observabilité & interface**
+- Dashboard console avec :
+- prix mark
+- capital disponible
+- PnL non réalisé
+- marges
+- Logs locaux avec logging structuré
+- Affichage des conditions d’indicateurs (diagnostic visuel)
+- Résumés de signaux détectés / pris / ignorés
+- Nettoyage automatique de la console tous les X cycles
+
+📩 **Alerte & monitoring**
+- Envoi d’alertes Telegram :
+- nouvelles positions
+- TP/SL posés
+- erreurs API
+- sortie partielle / totale
+- perte de connexion Internet
+- Système de détection de bug silencieux via logs et alertes
+
+⚙️ **Architecture / robustesse**
+- Gestion de retries sur erreurs réseau
+- Vérification de la connectivité Bitget
+- Contrôle global du cycle de vie du bot
+- Mode automatique : attend, détecte, agit seul
+- Lancement principal via __main__ avec print d’en-tête
 
 ## 🧱 Architecture du bot
 
