@@ -15,6 +15,7 @@ import random
 import traceback
 import urllib3
 from ccxt.base.errors import NetworkError
+from typing import cast
 
 
 #=======================================================#
@@ -134,9 +135,7 @@ def compute_rsi(series: pd.Series, period: int) -> pd.Series:
     avg_loss = loss.rolling(window=period).mean()
     rs = avg_gain / avg_loss
     rsi = 100 - (100 / (1 + rs))
-    return rsi
-    # Should this be modified when you change strategies?
-    # ❌ No — it can remain common (base indicator)
+    return pd.Series(rsi, index=series.index)
 
 def check_signal_bb_rsi(df: pd.DataFrame):
     """
@@ -157,7 +156,7 @@ def check_signal_bb_rsi(df: pd.DataFrame):
     df['width_STD'] = df['width'].rolling(window=WIDTH_PERIOD).std()
     df['vol_threshold'] = df['width_MA'] + VOL_MULT * df['width_STD']
 
-    df['RSI'] = compute_rsi(df['close'], RSI_PERIOD)
+    df['RSI'] = compute_rsi(cast(pd.Series, df['close']), RSI_PERIOD)
 
     last = df.iloc[-2]
     
@@ -195,14 +194,14 @@ def prepare_data():
 
 def fetch_historical(symbol="ETH/USDT:USDT", timeframe="15m", limit=200):
     """
-    Récupère les bougies swap via CCXT, en swap-only et avec retry/backoff sur l’erreur 40725.
+    Récupère les bougies swap via CCXT, en swap-only et avec retry/backoff sur l'erreur 40725.
     """
     exchange = ccxt.bitget({
         "apiKey": API_KEY,
         "secret": API_SECRET,
         "timeout": 5000,
         "enableRateLimit": True,
-        # 1) FORCE swap-only → plus d’appel à l’endpoint margin
+        # 1) FORCE swap-only → plus d'appel à l'endpoint margin
         "options": {
             "defaultType": "swap",
             "defaultSubType": "linear",
@@ -215,7 +214,10 @@ def fetch_historical(symbol="ETH/USDT:USDT", timeframe="15m", limit=200):
     for attempt in range(1, max_retries + 1):
         try:
             # 2) on charge manuellement les marchés swap
-            exchange.load_markets({"type": "swap"})
+            if not hasattr(exchange, "options") or exchange.options is None:
+                exchange.options = {}
+            exchange.options["defaultType"] = "swap"  # type: ignore
+            exchange.load_markets()
             # 3) on récupère les OHLCV
             ohlcv = exchange.fetch_ohlcv(
                 symbol,
@@ -236,7 +238,7 @@ def fetch_historical(symbol="ETH/USDT:USDT", timeframe="15m", limit=200):
         raise RuntimeError("fetch_historical a échoué après plusieurs tentatives (40725)")
 
     # === mise en forme DataFrame inchangée ===
-    df = pd.DataFrame(ohlcv, columns=["ts", "open", "high", "low", "close", "vol"])
+    df = pd.DataFrame(ohlcv, columns=["ts", "open", "high", "low", "close", "vol"])  # type: ignore
     df["ts"] = pd.to_datetime(df["ts"], unit="ms")
     df.set_index("ts", inplace=True)
 
@@ -248,7 +250,7 @@ def fetch_historical(symbol="ETH/USDT:USDT", timeframe="15m", limit=200):
     df['width_MA']    = df['width'].rolling(window=WIDTH_PERIOD).mean()
     df['width_STD']   = df['width'].rolling(window=WIDTH_PERIOD).std()
     df['vol_threshold'] = df['width_MA'] + VOL_MULT * df['width_STD']
-    df['RSI']         = compute_rsi(df['close'], RSI_PERIOD)
+    df['RSI']         = compute_rsi(cast(pd.Series, df['close']), RSI_PERIOD)
 
     return df.dropna()
 
@@ -383,7 +385,7 @@ def place_market_order(symbol, qty, side, mode):
 
 def get_entry_price_from_position(symbol):
     in_pos, _side, entry_price, *_ = wait_for_position(symbol)
-    return float(entry_price) if in_pos else 0.0
+    return float(entry_price) if in_pos and entry_price is not None else 0.0
 
 def is_position_open(symbol):
     path = "/api/v2/mix/position/single-position"
@@ -418,7 +420,7 @@ def set_full_tp_sl(symbol: str,
                    demo: bool,
                    mode: str):
     """
-    Place le TP et SL “full position” via plan orders V2.
+    Place le TP et SL "full position" via plan orders V2.
     """
     path = '/api/v2/mix/order/place-tpsl-order'
     product_type = 'SUSDT-FUTURES' if demo else 'USDT-FUTURES'
@@ -464,7 +466,7 @@ def set_full_tp_sl(symbol: str,
     if tp_res.get("code") == "00000" and sl_res.get("code") == "00000":
         if TELEGRAM_ENABLED:
             send_telegram_message(
-                f"🎯 *TP/SL auto placed*\n"
+                f"✅ *TP/SL auto placed*\n"
                 f"TP: `{tp_price:.{PRICE_PRECISION}f}` USDT\n"
                 f"SL: `{sl_price:.{PRICE_PRECISION}f}` USDT"
             )
@@ -506,7 +508,17 @@ def place_partial_tpp_visible(symbol, side, trigger_price, qty_limit, mode):
 
     return res
 
+def check_api_keys():
+    if (
+        not API_KEY or not API_SECRET or not PASSPHRASE or
+        "your_" in API_KEY or "your_" in API_SECRET or "your_" in PASSPHRASE
+    ):
+        print("❌ No API keys found. Please register your API keys to use the bot.")
+        exit(1)
+
+
 def fetch_dashboard_info(symbol: str) -> dict:
+    check_api_keys()  # Vérifie les clés API avant tout appel
     """
     # Fetch and return a structured dictionary with:
     #   - timestamp
@@ -900,6 +912,8 @@ if __name__ == '__main__':
         in_pos, side_detected, entry_price, qty, *_ = wait_for_position(SYMBOL)
 
         if in_pos:
+            if entry_price is None or qty is None or side_detected is None:
+                raise ValueError("entry_price, qty, or side_detected is None, cannot calculate TP/SL/TPP prices.")
             # 🎯 Pose du TPP (UNE SEULE FOIS après le trade)
             TRAIL_TRIGGER = float(TRAIL_TRIGGER)
             assert 0 < TRAIL_TRIGGER < 0.5, "❌ TRAIL_TRIGGER appears to be incorrectly set (not in %)"
@@ -974,6 +988,8 @@ if __name__ == '__main__':
                 in_pos, side_detected, entry_price, qty, *_ = wait_for_position(SYMBOL)
 
                 if in_pos:
+                    if entry_price is None or qty is None or side_detected is None:
+                        raise ValueError("entry_price, qty, or side_detected is None, cannot calculate TP/SL/TPP prices.")
                     # 🎯 Pose du TPP (UNE SEULE FOIS après le trade)
                     TRAIL_TRIGGER = float(TRAIL_TRIGGER)
                     assert 0 < TRAIL_TRIGGER < 0.5, "❌ TRAIL_TRIGGER appears to be incorrectly set (not in %)"
@@ -997,6 +1013,8 @@ if __name__ == '__main__':
             # 🧱 Pose TP/SL/TPP SI en position
             if in_pos and not just_placed_tp_sl:
                 if full_tp is None or full_sl is None:
+                    if entry_price is None or qty is None or side is None:
+                        raise ValueError("entry_price, qty, or side is None, cannot calculate TP/SL prices.")
                     print("📌 TP/SL not detected, placing (or replacing) them...")
                     tp_price = entry_price * (1 + TP_PERCENT_LONG/100) if side=='LONG' else entry_price * (1 - TP_PERCENT_SHORT/100)
                     sl_price = entry_price * (1 - SL_PERCENT_LONG/100) if side=='LONG' else entry_price * (1 + SL_PERCENT_SHORT/100)
